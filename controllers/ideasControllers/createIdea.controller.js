@@ -1,4 +1,4 @@
-const ideaModel = require('../../models/idea');
+const ideaModel = require('../../models/idea.model');
 
 exports.createIdea = async (req, res, next) => {
     try {

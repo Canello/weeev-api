@@ -1,4 +1,4 @@
-const participantModel = require("../../models/participant");
+const participantModel = require("../../models/participant.model");
 
 exports.participate = async (req, res, next) => {
     try {

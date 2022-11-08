@@ -1,13 +1,13 @@
-const ideaModel = require("../../models/idea");
+const userModel = require("../../models/user.model");
 
-exports.getIdeas = async (req, res, next) => {
+exports.getUser = async (req, res, next) => {
     try {
-        const userId = null//req.headers.userId;
-        const ideas = await ideaModel.getMyIdeas(userId, 0);
+        const userId = req.headers.userId;
+        const user = await userModel.getUserById(userId);
         res.json({
             status: 'ok',
             data: {
-                ideas: ideas
+                user: user
             }
         });
     } catch (err) {

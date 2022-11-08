@@ -1,5 +1,5 @@
-const ideaModel = require('../../models/idea');
-const participantModel = require('../../models/participant');
+const ideaModel = require('../../models/idea.model');
+const participantModel = require('../../models/participant.model');
 
 exports.getParticipants = async (req, res, next) => {
     try {
