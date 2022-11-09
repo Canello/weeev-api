@@ -1,8 +1,9 @@
 const ideaModel = require("../../models/idea.model");
+const { catchErrors } = require("../../utils/functions/catchErrors");
 
 exports.getIdeas = async (req, res, next) => {
-    try {
-        const userId = null//req.headers.userId;
+    catchErrors(async () => {
+        const userId = req.headers.userId;
         const ideas = await ideaModel.getMyIdeas(userId, 0);
         res.json({
             status: 'ok',
@@ -10,13 +11,5 @@ exports.getIdeas = async (req, res, next) => {
                 ideas: ideas
             }
         });
-    } catch (err) {
-        res.json({
-            status: 'failed',
-            data: {
-                error: 'Alguma coisa deu errado.'
-            }
-        });
-        console.log(err);
-    }
+    });
 }

@@ -1,12 +1,14 @@
 const ideaModel = require('../../models/idea.model');
 const participantModel = require('../../models/participant.model');
+const { AVAILABLE_ERRORS } = require('../../utils/data/errors');
+const { catchErrors } = require('../../utils/functions/catchErrors');
 
 exports.getParticipants = async (req, res, next) => {
-    try {
-        const userId = null//req.headers.userId;
+    catchErrors(async () => {
+        const userId = req.headers.userId;
         const ideaId = req.params.ideaId;
         const idea = await ideaModel.getIdea(ideaId);
-        const isCreator = idea.creator_id === userId;
+        const isCreator = userId === idea.creator_id;
         if (isCreator) {
             const participants = await participantModel.getParticipants(ideaId, 0);
             res.json({
@@ -16,15 +18,7 @@ exports.getParticipants = async (req, res, next) => {
                 }
             });
         } else {
-            throw Error('Não autorizado.');
+            throw Error(AVAILABLE_ERRORS.not_authorized);
         }
-    } catch (err) {
-        res.json({
-            status: 'failed',
-            data: {
-                error: 'Alguma coisa deu errado.'
-            }
-        });
-        console.log(err);
-    }
+    });
 }

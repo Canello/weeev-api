@@ -1,0 +1,1 @@
+exports.getUTCDate = () => new Date().toISOString();

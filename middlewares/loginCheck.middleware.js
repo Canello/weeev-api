@@ -1,10 +1,12 @@
-const { catchErrors } = require("../utils/functions/catchErrors");
 const { decodeUserToken } = require("../utils/functions/decodeUserToken");
 
-exports.authorization = (req, res, next) => {
-    catchErrors(async () => {
+exports.loginCheck = (req, res, next) => {
+    try {
         const { userId } = decodeUserToken(req.headers.authorization);
         req.headers.userId = userId;
+    } catch (err) {
+
+    } finally {
         next();
-    });
+    }
 }

@@ -1,4 +1,4 @@
-const db = require("../utils/database");
+const db = require("../utils/database/database");
 
 //Buscar usuiario por id
 const getUserById = async (userId) => {
@@ -31,8 +31,12 @@ const createUser = (email, fullName, createdAt) => {
 }
 
 // Editar usuário
-const editUser = (userId, fullName) => {
-    throw Error('editUser está incompleto no model. Arruma aqui que vai funcionar!!!!!!!!!!!!!!!!!!');
+const editUser = async (userId, fullName) => {
+    const arr = await db('users')
+        .where({ 'id': userId })
+        .update({ 'full_name': fullName })
+        .returning('*');
+    return arr[0];
 }
 
 module.exports = {

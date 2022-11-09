@@ -1,16 +1,20 @@
 const express = require('express');
 
-const controllers = require('../controllers/users.controllers');
+const { loginWithGoogle } = require('../controllers/users/loginWithGoogle.controller');
+const { getUser } = require('../controllers/users/getUser.controller');
+const { editUser } = require('../controllers/users/editUser.controller');
+
+const { authorization } = require('../middlewares/authorization.middleware');
 
 const router = express.Router();
 
 // Criar usuário ou entrar com Google
-router.post('/', controllers.loginWithGoogle);
+router.post('/', loginWithGoogle);
 
 // Dados do usuário
-router.get('/', controllers.getUser);
+router.get('/', authorization, getUser);
 
 // Editar perfil
-router.patch('/', controllers.editUser);
+router.patch('/', authorization, editUser);
 
 module.exports = router;

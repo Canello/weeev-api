@@ -1,4 +1,4 @@
-const db = require('../utils/database');
+const db = require('../utils/database/database');
 
 // Minhas ideias
 const getMyIdeas = (userId, offset) => {
@@ -6,6 +6,7 @@ const getMyIdeas = (userId, offset) => {
         .select([
             'ideas.id',
             'ideas.title',
+            'ideas.creator_id',
             'ideas.participants_count',
             'ideas.created_at',
             'users.full_name AS creator_name'
@@ -24,6 +25,7 @@ const getIdea = async (ideaId) => {
         .select([
             'ideas.id',
             'ideas.title',
+            'ideas.creator_id',
             'ideas.participants_count',
             'ideas.created_at',
             'users.full_name AS creator_name'
