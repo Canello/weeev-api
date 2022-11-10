@@ -6,7 +6,7 @@ const { decodeGoogleToken } = require('../../utils/functions/decodeGoogleToken')
 const { getUTCDate } = require('../../utils/functions/getUTCDate');
 
 exports.loginWithGoogle = async (req, res, next) => {
-    catchErrors(async () => {
+    catchErrors(res, async () => {
         const { googleToken } = req.body.data;
         const { email, fullName } = await decodeGoogleToken(googleToken);
         let user = await userModel.getUserByEmail(email);

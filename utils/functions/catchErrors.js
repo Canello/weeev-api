@@ -1,6 +1,6 @@
 const { AVAILABLE_ERRORS } = require('../data/errors');
 
-exports.catchErrors = async (f) => {
+exports.catchErrors = async (res, f) => {
     try {
         await f();
     } catch (err) {

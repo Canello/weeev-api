@@ -4,7 +4,7 @@ const { AVAILABLE_ERRORS } = require('../../utils/data/errors');
 const { catchErrors } = require('../../utils/functions/catchErrors');
 
 exports.getParticipants = async (req, res, next) => {
-    catchErrors(async () => {
+    catchErrors(res, async () => {
         const userId = req.headers.userId;
         const ideaId = req.params.ideaId;
         const idea = await ideaModel.getIdea(ideaId);
