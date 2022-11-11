@@ -37,8 +37,8 @@ const getIdea = async (ideaId) => {
 }
 
 // Criar ideia
-const createIdea = (title, creatorId, participantsCount, createdAt) => {
-    return db
+const createIdea = async (title, creatorId, participantsCount, createdAt) => {
+    const arr = await db
         .insert({
             'title': title,
             'creator_id': creatorId,
@@ -47,6 +47,7 @@ const createIdea = (title, creatorId, participantsCount, createdAt) => {
         })
         .into('ideas')
         .returning('*');
+    return arr[0];
 }
 
 module.exports = {

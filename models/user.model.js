@@ -19,8 +19,8 @@ const getUserByEmail = async (email) => {
 }
 
 // Criar usuário
-const createUser = (email, fullName, createdAt) => {
-    return db
+const createUser = async (email, fullName, createdAt) => {
+     const arr = await db
         .insert({
             'full_name': fullName,
             'email': email,
@@ -28,6 +28,7 @@ const createUser = (email, fullName, createdAt) => {
         })
         .into('users')
         .returning('*');
+    return arr[0];
 }
 
 // Editar usuário
