@@ -50,8 +50,16 @@ const createIdea = async (title, creatorId, participantsCount, createdAt) => {
     return arr[0];
 }
 
+// Incrementar contagem de participantes
+const incrementParticipantsCount = async (ideaId) => {
+    return db('ideas')
+        .where({ 'id': ideaId })
+        .increment('participants_count', 1);
+}
+
 module.exports = {
     getMyIdeas,
     getIdea,
-    createIdea
+    createIdea,
+    incrementParticipantsCount
 }
