@@ -1,7 +1,7 @@
 const db = require('../utils/database/database');
 
 // Minhas ideias
-const getMyIdeas = (userId, offset) => {
+const getMyIdeas = (userId, page) => {
     return db
         .select([
             'ideas.id',
@@ -16,7 +16,7 @@ const getMyIdeas = (userId, offset) => {
         .where({ 'ideas.creator_id': userId })
         .orderBy('created_at', 'desc')
         .limit(50)
-        .offset(offset);
+        .offset(page*50);
 }
 
 // Ideia

@@ -1,14 +1,14 @@
 const db = require("../utils/database/database");
 
 // Participantes de uma ideia
-const getParticipants = (ideaId, offset) => {
+const getParticipants = (ideaId, page) => {
     return db
         .select('*')
         .from('participants')
         .where({ 'idea_id': ideaId })
         .orderBy('created_at', 'desc')
         .limit(50)
-        .offset(offset);
+        .offset(page*50);
 }
 
 // Criar participante

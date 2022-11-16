@@ -7,10 +7,11 @@ exports.getParticipants = async (req, res, next) => {
     catchErrors(res, async () => {
         const userId = req.headers.userId;
         const ideaId = req.params.ideaId;
+        const page = req.query.page ?? 0;
         const idea = await ideaModel.getIdea(ideaId);
         const isCreator = userId === idea.creator_id;
         if (isCreator) {
-            const participants = await participantModel.getParticipants(ideaId, 0);
+            const participants = await participantModel.getParticipants(ideaId, page);
             res.json({
                 status: 'ok',
                 data: {

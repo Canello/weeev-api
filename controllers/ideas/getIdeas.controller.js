@@ -5,7 +5,8 @@ const { addIsCreator } = require('../../utils/functions/addIsCreator');
 exports.getIdeas = async (req, res, next) => {
     catchErrors(res, async () => {
         const userId = req.headers.userId;
-        const ideas = await ideaModel.getMyIdeas(userId, 0);
+        const page = req.query.page ?? 0;
+        const ideas = await ideaModel.getMyIdeas(userId, page);
         const resIdeas = ideas.map(idea => addIsCreator(idea, userId));
         res.json({
             status: 'ok',
