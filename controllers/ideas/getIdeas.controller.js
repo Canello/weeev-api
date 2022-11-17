@@ -7,11 +7,13 @@ exports.getIdeas = async (req, res, next) => {
         const userId = req.headers.userId;
         const page = req.query.page ?? 0;
         const ideas = await ideaModel.getMyIdeas(userId, page);
+        const totalPages = await ideaModel.getTotalPages(userId);
         const resIdeas = ideas.map(idea => addIsCreator(idea, userId));
         res.json({
             status: 'ok',
             data: {
-                ideas: resIdeas
+                ideas: resIdeas,
+                total_pages: totalPages
             }
         });
     });

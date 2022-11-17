@@ -1,5 +1,7 @@
 const db = require('../utils/database/database');
 
+const MY_IDEAS_PER_PAGE = 15;
+
 // Minhas ideias
 const getMyIdeas = (userId, page) => {
     return db
@@ -15,8 +17,18 @@ const getMyIdeas = (userId, page) => {
         .leftJoin('users', 'ideas.creator_id', 'users.id')
         .where({ 'ideas.creator_id': userId })
         .orderBy('created_at', 'desc')
-        .limit(50)
-        .offset(page*50);
+        .limit(MY_IDEAS_PER_PAGE)
+        .offset(page*MY_IDEAS_PER_PAGE);
+}
+
+// Contagem de minhas ideias
+const getTotalPages = async (userId) => {
+    const arr = await db('ideas')
+        .where({ 'creator_id': userId })
+        .count('*');
+    const ideasCount = arr[0].count;
+    const totalPages = Math.ceil(ideasCount / MY_IDEAS_PER_PAGE);
+    return totalPages;
 }
 
 // Ideia
@@ -59,6 +71,7 @@ const incrementParticipantsCount = async (ideaId) => {
 
 module.exports = {
     getMyIdeas,
+    getTotalPages,
     getIdea,
     createIdea,
     incrementParticipantsCount
