@@ -18,5 +18,3 @@ app.use('/users', usersRoutes);
 app.listen(3001);
 
 // !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!! Trocar fetch por lib na autenticação do token !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
-
-// !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!! PRÓXIMO PASSO: CONECTAR FRONT-END COM BACK-END !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!

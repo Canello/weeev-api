@@ -1,15 +1,16 @@
 const db = require("../utils/database/database");
 
+const PARTICIPANTS_PER_PAGE = 15;
+
 // Participantes de uma ideia
 const getParticipants = (ideaId, page) => {
-    const itemsPerPage = 50;
     return db
         .select('*')
         .from('participants')
         .where({ 'idea_id': ideaId })
         .orderBy('created_at', 'desc')
-        .limit(itemsPerPage)
-        .offset(page*itemsPerPage);
+        .limit(PARTICIPANTS_PER_PAGE)
+        .offset(page*PARTICIPANTS_PER_PAGE);
 }
 
 // Criar participante
