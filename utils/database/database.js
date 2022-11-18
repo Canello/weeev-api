@@ -8,7 +8,7 @@ const CONNECTION = process.env.MODE === 'dev' ?
     :
     {
         connectionString: process.env.DATABASE_URL,
-        ssl: true
+        ssl: false
     };
 
 const db = require('knex')({
