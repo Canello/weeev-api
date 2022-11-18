@@ -10,7 +10,9 @@ const CONNECTION = process.env.MODE === 'dev' ?
     :
     {
         connectionString: process.env.DATABASE_URL,
-        ssl: false
+        ssl: {
+            rejectUnauthorized: false
+        }
     };
 
 console.log('DATABASE!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!')
