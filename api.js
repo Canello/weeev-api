@@ -15,6 +15,4 @@ app.use(allowCors);
 app.use('/ideas', ideasRoutes);
 app.use('/users', usersRoutes);
 
-app.listen(3001);
-
-// !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!! Trocar fetch por lib na autenticação do token !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+app.listen(process.env.PORT || 3001);
