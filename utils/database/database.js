@@ -1,5 +1,3 @@
-process.env.NODE_TLS_REJECT_UNAUTHORIZED = 0;
-
 const CONNECTION = process.env.MODE === 'dev' ?
     {
         host: process.env.DB_HOST,
