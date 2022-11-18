@@ -13,10 +13,6 @@ const CONNECTION = process.env.MODE === 'dev' ?
         }
     };
 
-console.log('DATABASE!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!')
-console.log('MODE', process.env.MODE)
-console.log(CONNECTION)
-
 const db = require('knex')({
     client: 'pg',
     connection: CONNECTION
