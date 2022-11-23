@@ -24,8 +24,9 @@ REST API do app weeev - [https://weeev.fun](https://weeev.fun).
 
  controllers/  
  &emsp;ideas/  
- &emsp;&emsp;exampleController.controller.js  
+ &emsp;&emsp;exampleIdea.controller.js  
  &emsp;users/  
+ &emsp;&emsp;exampleUser.controller.js  
  middlewares/  
  models/  
  &emsp;idea.model.js  
