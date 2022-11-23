@@ -22,20 +22,20 @@ REST API do app weeev - [https://weeev.fun](https://weeev.fun).
 
  ## Estrutura de pastas
 
- controllers/
- &emsp;ideas/
- &emsp;&emsp;exampleController.controller.js
- &emsp;users/
- middlewares/
- models/
- &emsp;idea.model.js
- &emsp;participant.model.js
- &emsp;user.model.js
- routes/
- &emsp;ideas.routes.js
- &emsp;users.routes.js
- utils/
- &emsp;data/
- &emsp;database/
- &emsp;functions/
- api.js
+ controllers/  
+ &emsp;ideas/  
+ &emsp;&emsp;exampleController.controller.js  
+ &emsp;users/  
+ middlewares/  
+ models/  
+ &emsp;idea.model.js  
+ &emsp;participant.model.js  
+ &emsp;user.model.js  
+ routes/  
+ &emsp;ideas.routes.js  
+ &emsp;users.routes.js  
+ utils/  
+ &emsp;data/  
+ &emsp;database/  
+ &emsp;functions/  
+ api.js  
